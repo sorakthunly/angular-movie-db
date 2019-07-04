@@ -1,16 +1,28 @@
 import { Action } from '@ngrx/store';
-import { Movies, Movie } from 'src/app/models';
+import { IMovie, IMoviesListResponse } from 'src/app/types';
 
 export enum EMoviesAction {
+	CLEAR_SEARCHED_MOVIES = 'CLEAR_SEARCHED_MOVIES',
 	FETCH_MOVIE = 'FETCH_MOVIE',
 	FETCH_MOVIE_SUCCESS = 'FETCH_MOVIE_SUCCESS',
 	FETCH_MOVIE_FAILURE = 'FETCH_MOVIE_FAILURE',
-	FETCH_MOVIES = 'FETCH_MOVIES',
-	FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS',
-	FETCH_MOVIES_FAILURE = 'FETCH_MOVIES_FAILURE',
+	FETCH_POPULAR_MOVIES = 'FETCH_POPULAR_MOVIES',
+	FETCH_POPULAR_MOVIES_SUCCESS = 'FETCH_POPULAR_MOVIES_SUCCESS',
+	FETCH_POPULAR_MOVIES_FAILURE = 'FETCH_POPULAR_MOVIES_FAILURE',
 	SEARCH_MOVIES = 'SEARCH_MOVIES',
 	SEARCH_MOVIES_SUCCESS = 'SEARCH_MOVIES_SUCCESS',
-	SEARCH_MOVIES_FAILURE = 'SEARCH_MOVIES_FAILURE'
+	SEARCH_MOVIES_FAILURE = 'SEARCH_MOVIES_FAILURE',
+	SEARCH_MORE_MOVIES = 'SEARCH_MORE_MOVIES',
+	SEARCH_MORE_MOVIES_SUCCESS = 'SEARCH_MORE_MOVIES_SUCCESS',
+	SEARCH_MORE_MOVIES_FAILURE = 'SEARCH_MORE_MOVIES_FAILURE'
+}
+
+/**
+ * @description
+ * Action to clear searched movies from store.
+ */
+export class ClearSearchedMovies implements Action {
+	readonly type = EMoviesAction.CLEAR_SEARCHED_MOVIES;
 }
 
 /**
@@ -23,7 +35,7 @@ export class FetchMovie implements Action {
 	/**
 	 * @param {string} id	Unique identificaiton of a movie instance
 	 */
-	constructor(public id: string) {}
+	constructor(public id: number) {}
 }
 
 /**
@@ -34,9 +46,9 @@ export class FetchMovieSuccess implements Action {
 	readonly type = EMoviesAction.FETCH_MOVIE_SUCCESS;
 
 	/**
-	 * @param {Movie} movie	Movie instance successfully fetched
+	 * @param {IMovie} movie	Movie instance successfully fetched
 	 */
-	constructor(public movie: Movie) {}
+	constructor(public movie: IMovie) {}
 }
 
 /**
@@ -56,8 +68,8 @@ export class FetchMovieFailure implements Action {
  * @description
  * Action to dispatch when fetching movies.
  */
-export class FetchMovies implements Action {
-	readonly type = EMoviesAction.FETCH_MOVIES;
+export class FetchPopularMovies implements Action {
+	readonly type = EMoviesAction.FETCH_POPULAR_MOVIES;
 
 	/**
 	 * @param {number} page	Page number to paginate - defaulted to 1
@@ -69,21 +81,21 @@ export class FetchMovies implements Action {
  * @description
  * Action to dispatch when the movies fetch returns successful response.
  */
-export class FetchMoviesSuccess implements Action {
-	readonly type = EMoviesAction.FETCH_MOVIES_SUCCESS;
+export class FetchPopularMoviesSuccess implements Action {
+	readonly type = EMoviesAction.FETCH_POPULAR_MOVIES_SUCCESS;
 
 	/**
-	 * @param {Movies} movies	Array of movies successfully fetched
+	 * @param {IMovies} movies	Array of movies successfully fetched
 	 */
-	constructor(public movies: Movies) {}
+	constructor(public movies: IMoviesListResponse) {}
 }
 
 /**
  * @description
  * Action to dispatch when the movies fetch returns failure response.
  */
-export class FetchMoviesFailure implements Action {
-	readonly type = EMoviesAction.FETCH_MOVIES_FAILURE;
+export class FetchPopularMoviesFailure implements Action {
+	readonly type = EMoviesAction.FETCH_POPULAR_MOVIES_FAILURE;
 
 	/**
 	 * @param {string} message	Error message to display
@@ -99,10 +111,10 @@ export class SearchMovies implements Action {
 	readonly type = EMoviesAction.SEARCH_MOVIES;
 
 	/**
-	 * @param {string} keyword	Keyword to search by
+	 * @param {string} keywords	Keyword to search by
 	 * @param {number} page	Page number to paginate - defaulted to 1
 	 */
-	constructor(public keyword: string, public page: number = 1) {}
+	constructor(public keywords: string) {}
 }
 
 /**
@@ -113,9 +125,9 @@ export class SearchMoviesSuccess implements Action {
 	readonly type = EMoviesAction.SEARCH_MOVIES_SUCCESS;
 
 	/**
-	 * @param {Movies} movies	Array of movies successfully fetched
+	 * @param {IMovies} movies	Array of movies successfully fetched
 	 */
-	constructor(public movies: Movies) {}
+	constructor(public movies: IMoviesListResponse) {}
 }
 
 /**
@@ -131,13 +143,57 @@ export class SearchMoviesFailure implements Action {
 	constructor(public message: string) {}
 }
 
+/**
+ * @description
+ * Action to dispatch when searching more movies.
+ */
+export class SearchMoreMovies implements Action {
+	readonly type = EMoviesAction.SEARCH_MORE_MOVIES;
+
+	/**
+	 * @param {string} keywords	Keyword to search by
+	 * @param {number} page	Page number to paginate - defaulted to 1
+	 */
+	constructor(public keywords: string, public page: number) {}
+}
+
+/**
+ * @description
+ * Action to dispatch when more movies search returns successful response.
+ */
+export class SearchMoreMoviesSuccess implements Action {
+	readonly type = EMoviesAction.SEARCH_MORE_MOVIES_SUCCESS;
+
+	/**
+	 * @param {IMovies} movies	Array of movies successfully fetched
+	 */
+	constructor(public movies: IMoviesListResponse) {}
+}
+
+/**
+ * @description
+ * Action to dispatch when more movies search returns failure response.
+ */
+export class SearchMoreMoviesFailure implements Action {
+	readonly type = EMoviesAction.SEARCH_MORE_MOVIES_FAILURE;
+
+	/**
+	 * @param {string} message	Error message to display
+	 */
+	constructor(public message: string) {}
+}
+
 export type TMoviesAction =
+	| ClearSearchedMovies
 	| FetchMovie
 	| FetchMovieSuccess
 	| FetchMovieFailure
-	| FetchMovies
-	| FetchMoviesSuccess
-	| FetchMoviesFailure
+	| FetchPopularMovies
+	| FetchPopularMoviesSuccess
+	| FetchPopularMoviesFailure
 	| SearchMovies
 	| SearchMoviesSuccess
-	| SearchMoviesFailure;
+	| SearchMoviesFailure
+	| SearchMoreMovies
+	| SearchMoreMoviesSuccess
+	| SearchMoreMoviesFailure;

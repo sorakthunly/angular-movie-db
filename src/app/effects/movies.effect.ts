@@ -5,15 +5,18 @@ import { switchMap, catchError } from 'rxjs/operators';
 import { MoviesService } from '../services';
 import {
 	EMoviesAction,
-	FetchMovies,
-	FetchMoviesSuccess,
-	FetchMoviesFailure,
+	FetchPopularMovies,
+	FetchPopularMoviesSuccess,
+	FetchPopularMoviesFailure,
 	FetchMovie,
 	FetchMovieSuccess,
 	FetchMovieFailure,
 	SearchMovies,
 	SearchMoviesSuccess,
-	SearchMoviesFailure
+	SearchMoviesFailure,
+	SearchMoreMovies,
+	SearchMoreMoviesSuccess,
+	SearchMoreMoviesFailure
 } from '../store/actions';
 
 @Injectable()
@@ -24,20 +27,31 @@ export class MoviesEffect {
 	searchMovies = this.actions.pipe(
 		ofType<SearchMovies>(EMoviesAction.SEARCH_MOVIES),
 		switchMap(payload =>
-			this.moviesService.searchMoviesByKeyword(payload.keyword, payload.page).pipe(
-				switchMap(movies => of(new SearchMoviesSuccess(movies))),
+			this.moviesService.searchMoviesByKeyword(payload.keywords).pipe(
+				switchMap(response => of(new SearchMoviesSuccess(response))),
 				catchError(err => of(new SearchMoviesFailure(err.error.message)))
 			)
 		)
 	);
 
 	@Effect()
+	searchMoreMovies = this.actions.pipe(
+		ofType<SearchMoreMovies>(EMoviesAction.SEARCH_MORE_MOVIES),
+		switchMap(payload =>
+			this.moviesService.searchMoviesByKeyword(payload.keywords, payload.page).pipe(
+				switchMap(response => of(new SearchMoreMoviesSuccess(response))),
+				catchError(err => of(new SearchMoreMoviesFailure(err.error.message)))
+			)
+		)
+	);
+
+	@Effect()
 	fetchMovies = this.actions.pipe(
-		ofType<FetchMovies>(EMoviesAction.FETCH_MOVIES),
+		ofType<FetchPopularMovies>(EMoviesAction.FETCH_POPULAR_MOVIES),
 		switchMap(payload =>
 			this.moviesService.fetchPopularMovies(payload.page).pipe(
-				switchMap(movies => of(new FetchMoviesSuccess(movies))),
-				catchError(err => of(new FetchMoviesFailure(err.error.message)))
+				switchMap(response => of(new FetchPopularMoviesSuccess(response))),
+				catchError(err => of(new FetchPopularMoviesFailure(err.error.message)))
 			)
 		)
 	);

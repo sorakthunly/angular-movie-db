@@ -1,0 +1,5 @@
+<section class="movie-card-container">
+	<img class="movie-card-image" [src]="movie.poster_path | image" alt="Movie thumbmail" />
+	<p class="text-light">{{ movie.original_title }}</p>
+	<p class="text-dark small">{{ movie.release_date | stringDate }}</p>
+</section>

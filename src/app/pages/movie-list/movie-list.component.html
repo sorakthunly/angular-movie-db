@@ -1,4 +1,26 @@
 <section class="container">
-	<app-search-input></app-search-input>
-	<app-heading-section>Popular Movies</app-heading-section>
+	<app-search-input (search)="searchMoviesByKeywords($event)"></app-search-input>
+
+	<app-scroll-layout *ngIf="!movies.keywords" (scrollAtBottom)="fetchMorePopularMovies()">
+		<app-heading-section>Popular Movies</app-heading-section>
+		<section class="popular-movies-container row">
+			<article *ngFor="let movie of movies?.popularMovies" class="col-md-3 col-6">
+				<app-movie-card [movie]="movie" [routerLink]="[movie.id]"></app-movie-card>
+			</article>
+		</section>
+	</app-scroll-layout>
+
+	<app-scroll-layout *ngIf="movies.keywords" (scrollAtBottom)="searchMoreMoviesByKeyword()">
+		<app-heading-section>Search Results</app-heading-section>
+		<section class="searched-movies-container row">
+			<article *ngFor="let movie of movies?.searchedMovies" class="col-md-3 col-6">
+				<app-movie-card [movie]="movie" [routerLink]="[movie.id]"></app-movie-card>
+			</article>
+		</section>
+
+		<section class="text-center">
+			<p>Unfortunately, we could not find any results matching your search query.</p>
+			<app-heading-section>:'(</app-heading-section>
+		</section>
+	</app-scroll-layout>
 </section>

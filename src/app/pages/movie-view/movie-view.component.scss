@@ -1,0 +1,14 @@
+.vertical-offset-wrapper {
+	position: relative;
+	width: 150px;
+
+	.vertical-offset {
+		position: absolute;
+		top: -150px;
+	}
+}
+
+.poster-image {
+	border-radius: 1em;
+	width: 150px;
+}
