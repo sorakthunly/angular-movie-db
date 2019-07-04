@@ -1,5 +1,8 @@
-<section class="movie-card-container">
+<section class="movie-card-container mb-3">
+	<app-user-score [score]="movie.vote_average"></app-user-score>
 	<img class="movie-card-image" [src]="movie.poster_path | image" alt="Movie thumbmail" />
-	<p class="text-light">{{ movie.original_title }}</p>
-	<p class="text-dark small">{{ movie.release_date | stringDate }}</p>
+	<article class="py-2">
+		<p class="movie-card-title text-light mb-1">{{ movie.original_title }}</p>
+		<p class="movie-card-date text-dark small mb-0">{{ movie.release_date | stringDate }}</p>
+	</article>
 </section>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.auto';
 import { BASE_API_URL } from '../constants';
 import { IMovie, IMoviesListResponse } from '../types';
 
@@ -12,7 +13,7 @@ import { IMovie, IMoviesListResponse } from '../types';
 @Injectable({ providedIn: 'root' })
 export class MoviesService {
 	/** API Key for the Movie DB */
-	private readonly apiKey;
+	private readonly apiKey = environment.apiKey;
 
 	/** Base API URL */
 	private readonly baseUrl = BASE_API_URL;

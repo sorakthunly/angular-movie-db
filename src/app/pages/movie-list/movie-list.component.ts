@@ -6,8 +6,7 @@ import { ObservablePage } from 'src/app/utils/base-pages';
 
 @Component({
 	selector: 'app-movie-list',
-	templateUrl: './movie-list.component.html',
-	styleUrls: ['./movie-list.component.scss']
+	templateUrl: './movie-list.component.html'
 })
 export class MovieListComponent extends ObservablePage {
 	/** Movies store */

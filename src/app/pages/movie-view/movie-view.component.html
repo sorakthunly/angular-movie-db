@@ -1,30 +1,38 @@
-<app-backdrop-cover [imageUrl]="movieDetail?.movie?.backdrop_path | image">
-	<app-container>
-		<button (click)="goBackPage()" mat-icon-button>
-			<mat-icon>arrow_back</mat-icon>
-		</button>
-	</app-container>
-</app-backdrop-cover>
+<app-container-fullscreen *ngIf="movieDetail.isLoading">
+	<app-loading-section></app-loading-section>
+</app-container-fullscreen>
 
-<app-container>
-	<section class="d-flex align-items-end">
-		<section class="vertical-offset-wrapper">
-			<section class="vertical-offset">
-				<img [src]="movieDetail?.movie?.poster_path | image" alt="Poster image" class="poster-image" />
-			</section>
-		</section>
-
+<ng-container *ngIf="!movieDetail.isLoading && movieDetail.movie">
+	<app-backdrop-cover [imageUrl]="movieDetail.movie.backdrop_path | image">
 		<app-container>
-			<app-heading-title>{{ movieDetail?.movie?.original_title }}</app-heading-title>
-			<p class="text-dark small">
-				{{ movieDetail?.movie?.release_date | stringDate: 'YYYY' }} ·
-				{{ movieDetail?.movie?.vote_average | userScore }} User Score
-			</p>
+			<button mat-icon-button (click)="goBackPage()">
+				<mat-icon>arrow_back</mat-icon>
+			</button>
 		</app-container>
-	</section>
+	</app-backdrop-cover>
 
-	<hr />
+	<app-container>
+		<!-- <section class="d-flex align-items-end">
+			<section class="vertical-offset-wrapper">
+				<section class="vertical-offset">
+					<img [src]="movieDetail.movie.poster_path | image" alt="Poster image" class="poster-image" />
+				</section>
+			</section>
 
-	<app-heading-section>Overview</app-heading-section>
-	<p class="text-light">{{ movieDetail?.movie?.overview }}</p>
-</app-container>
+			<app-container>
+				<app-heading-title>{{ movieDetail.movie.original_title }}</app-heading-title>
+				<p class="text-dark small">
+					{{ movieDetail.movie.release_date | stringDate: 'YYYY' }} ·
+					{{ movieDetail.movie.vote_average | userScore }} User Score
+				</p>
+			</app-container>
+		</section> -->
+		<app-movie-recap
+			[releaseDate]="movieDetail.movie.release_date"
+			[score]="movieDetail.movie.vote_average"
+			[title]="movieDetail.movie.original_title"
+		></app-movie-recap>
+		<hr />
+		<app-overview-section [text]="movieDetail.movie.overview"></app-overview-section>
+	</app-container>
+</ng-container>

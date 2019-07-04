@@ -1,0 +1,8 @@
+<article
+	class="user-score small"
+	[class.score-high]="score >= 7.5"
+	[class.score-average]="score < 7.5 && score >= 5"
+	[class.score-low]="score < 5"
+>
+	{{ score | userScore }}
+</article>

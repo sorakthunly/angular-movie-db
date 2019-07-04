@@ -1,6 +1,18 @@
 .movie-card-container {
+	position: relative;
+
+	.movie-card-title {
+		font-size: 90%;
+	}
+
 	.movie-card-image {
 		border-radius: 1em;
 		width: 100%;
 	}
+}
+
+app-user-score {
+	left: 10px;
+	position: absolute;
+	top: 15px;
 }

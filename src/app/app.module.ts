@@ -7,47 +7,54 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
+	BackdropCoverComponent,
+	ContainerComponent,
+	ContainerFullscreenComponent,
+	HeaderComponent,
 	HeadingTitleComponent,
 	HeadingSectionComponent,
+	LoadingSectionComponent,
 	MovieCardComponent,
+	MoviesContainerComponent,
+	NotFoundComponent,
+	ScrollLayoutComponent,
+	ScrollTopComponent,
 	SearchInputComponent,
-	ScrollLayoutComponent
+	UserScoreComponent
 } from './components';
-import { BackdropCoverComponent } from './components/backdrop-cover/backdrop-cover.component';
-import { ContainerComponent } from './components/container/container.component';
+import { MovieRecapComponent } from './components/movie-recap/movie-recap.component';
+import { OverviewSectionComponent } from './components/overview-section/overview-section.component';
 import { MoviesEffect } from './effects';
 import { MovieListComponent, MovieViewComponent, PageNotFoundComponent } from './pages';
-import { ImagePipe } from './pipes';
-import { StringDatePipe } from './pipes/string-date.pipe';
-import { UserScorePipe } from './pipes/user-score.pipe';
+import { ImagePipe, StringDatePipe, UserScorePipe } from './pipes';
 import { APPLICATION_REDUCERS } from './store';
 
 const COMPONENTS = [
+	BackdropCoverComponent,
+	ContainerComponent,
+	ContainerFullscreenComponent,
+	HeaderComponent,
 	HeadingTitleComponent,
 	HeadingSectionComponent,
+	LoadingSectionComponent,
 	MovieCardComponent,
+	MoviesContainerComponent,
+	NotFoundComponent,
 	ScrollLayoutComponent,
-	SearchInputComponent
+	ScrollTopComponent,
+	SearchInputComponent,
+	UserScoreComponent
 ];
-const MATERIAL_MODULES = [MatButtonModule, MatIconModule];
+const MATERIAL_MODULES = [MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 const PAGES = [MovieListComponent, MovieViewComponent, PageNotFoundComponent];
-const PIPES = [ImagePipe];
+const PIPES = [ImagePipe, StringDatePipe, UserScorePipe];
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		...COMPONENTS,
-		...PAGES,
-		...PIPES,
-		ContainerComponent,
-		BackdropCoverComponent,
-		UserScorePipe,
-		StringDatePipe
-	],
+	declarations: [AppComponent, ...COMPONENTS, ...PAGES, ...PIPES, OverviewSectionComponent, MovieRecapComponent],
 	imports: [
 		BrowserAnimationsModule,
 		BrowserModule,

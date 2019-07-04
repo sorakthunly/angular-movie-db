@@ -8,5 +8,9 @@ body {
 	color: $white;
 }
 
+hr {
+	background-color: $quartenary;
+}
+
 @include text-emphasis-variant('.text-dark', $text-dark);
 @include text-emphasis-variant('.text-light', $text-light);
