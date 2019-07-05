@@ -11,6 +11,7 @@ export interface IMovie {
 	genre_ids: number[];
 	backdrop_path: string;
 	adult: boolean;
+	runtime: number;
 	overview: string;
 	release_date: string;
 }
