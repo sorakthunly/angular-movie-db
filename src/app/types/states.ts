@@ -11,7 +11,6 @@ export interface IPageState {
 
 export interface IMoviesState extends IPageState {
 	initialised: boolean;
-	isShowingSearchedMovies: boolean;
 	keywords: string;
 	selectedMovie: IMovieState;
 	popularMovies: IMovies;

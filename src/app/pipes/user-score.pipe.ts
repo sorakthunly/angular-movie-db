@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { round } from 'lodash';
 
 @Pipe({
 	name: 'userScore'
@@ -12,6 +11,6 @@ export class UserScorePipe implements PipeTransform {
 	 * @param {number} score Vote arrange 0 - 10.
 	 */
 	transform(score: number): any {
-		return `${round(score * 10)}%`;
+		return `${Math.round(score * 10)}%`;
 	}
 }

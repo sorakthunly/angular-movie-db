@@ -5,7 +5,6 @@ const initialState: IMoviesState = {
 	error: null,
 	isLoading: false,
 	initialised: false,
-	isShowingSearchedMovies: false,
 	keywords: null,
 	selectedMovie: {
 		error: null,
