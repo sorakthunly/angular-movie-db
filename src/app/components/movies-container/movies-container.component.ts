@@ -16,7 +16,7 @@ export class MoviesContainerComponent {
 	@Input() title: string;
 
 	/** Emits an event when scroll is at bottom of the page */
-	@Output() scrollAtBottom: EventEmitter<void> = new EventEmitter();
+	@Output() scrollApproachesBottom: EventEmitter<void> = new EventEmitter();
 
 	/**
 	 * @description

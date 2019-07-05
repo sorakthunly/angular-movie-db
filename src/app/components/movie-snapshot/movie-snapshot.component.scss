@@ -3,10 +3,10 @@
 .movie-snapshot {
 	min-height: calc(#{$movie-poster-height} + #{$movie-poster-offset-top});
 
-	.movie-recap-offset-wrapper {
+	.movie-snapshot-offset-wrapper {
 		position: relative;
 
-		.movie-recap-poster-image {
+		.movie-snapshot-poster-image {
 			border-radius: $movie-poster-border-radius;
 			height: $movie-poster-height;
 			position: absolute;
@@ -14,7 +14,7 @@
 			width: $movie-poster-width;
 		}
 
-		.movie-recap-wrapper {
+		.movie-snapshot-wrapper {
 			padding-left: $movie-poster-width-offset;
 		}
 	}

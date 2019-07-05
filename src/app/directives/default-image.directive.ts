@@ -12,7 +12,7 @@ export class DefaultImageDirective {
 	@Input() src: string;
 
 	/** Default image URL to display */
-	defaultImage = 'assets/images/movie-default-poster.webp';
+	defaultImage = 'assets/images/movie-default-poster.jpg';
 
 	/**
 	 * @description

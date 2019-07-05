@@ -1,6 +1,7 @@
 @import 'src/variables';
 
 .movie-card-container {
+	cursor: pointer;
 	position: relative;
 
 	.movie-card-title {
@@ -9,6 +10,7 @@
 
 	.movie-card-image {
 		border-radius: $movie-poster-border-radius;
+		min-height: $movie-post-min-height;
 		width: 100%;
 	}
 }

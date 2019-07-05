@@ -1,6 +1,6 @@
 <app-fullscreen-loading *ngIf="movieDetail.isLoading"></app-fullscreen-loading>
 <ng-container *ngIf="!movieDetail.isLoading && movieDetail.movie">
-	<app-backdrop-cover [imageUrl]="movieDetail.movie.backdrop_path | image">
+	<app-backdrop-cover [imageUrl]="movieDetail.movie.backdrop_path | image: true">
 		<app-container [hasVerticalPadding]="true">
 			<button mat-icon-button (click)="goBackPage()">
 				<mat-icon>arrow_back</mat-icon>

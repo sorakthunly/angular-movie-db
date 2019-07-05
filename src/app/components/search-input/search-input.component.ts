@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { isNull } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -9,11 +9,11 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 	styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent {
+	/** Search keyword */
+	@Input() searchKeywords: string;
+
 	/** Emits an event when to fire a search call after debounced */
 	@Output() search: EventEmitter<string> = new EventEmitter();
-
-	/** Search keyword */
-	searchKeywords: string;
 
 	/** Search keyword behaviour subject to debounce call */
 	searchKeywords$: BehaviorSubject<string> = new BehaviorSubject(null);

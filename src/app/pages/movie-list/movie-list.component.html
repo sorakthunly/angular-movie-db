@@ -1,19 +1,19 @@
 <app-header></app-header>
 <section class="container">
-	<app-search-input (search)="searchMoviesByKeywords($event)"></app-search-input>
+	<app-search-input [searchKeywords]="movies.keywords" (search)="searchMoviesByKeywords($event)"></app-search-input>
 	<app-movies-container
 		*ngIf="!movies.keywords"
 		[isLoading]="movies.isLoading"
 		[movies]="movies.popularMovies"
 		title="Popular Movies"
-		(scrollAtBottom)="fetchMorePopularMovies()"
+		(scrollApproachesBottom)="fetchMorePopularMovies()"
 	></app-movies-container>
 	<app-movies-container
 		*ngIf="movies.keywords"
 		[isLoading]="movies.isLoading"
 		[movies]="movies.searchedMovies"
 		title="Search Results"
-		(scrollAtBottom)="searchMoreMoviesByKeyword()"
+		(scrollApproachesBottom)="searchMoreMoviesByKeyword()"
 	></app-movies-container>
 </section>
 <app-scroll-top></app-scroll-top>

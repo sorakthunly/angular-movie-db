@@ -1,3 +1,7 @@
-<app-heading-title>{{ title }}</app-heading-title>
-<p class="text-dark small mb-1">{{ releaseDate | stringDate: 'YYYY' }} · {{ score | userScore }} User Score</p>
-<p class="text-dark small mb-0">{{ duration | movieDuration }}</p>
+<section class="movie-recap">
+	<app-heading-title>{{ title }}</app-heading-title>
+	<p class="movie-recap-details text-dark small mb-1">
+		{{ releaseDate | stringDate: 'YYYY' }} · {{ score | userScore }} User Score
+	</p>
+	<p class="movie-recap-duration text-dark small mb-0">{{ duration | movieDuration }}</p>
+</section>

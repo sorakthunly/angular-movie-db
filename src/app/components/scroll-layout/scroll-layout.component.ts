@@ -5,19 +5,18 @@ import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 	templateUrl: './scroll-layout.component.html'
 })
 export class ScrollLayoutComponent {
-	/** Event emitted when the scroll is at bottom of the page */
-	@Output() scrollAtBottom: EventEmitter<void> = new EventEmitter();
+	/** Event emitted when the scroll approaches the bottom of the page */
+	@Output() scrollApproachesBottom: EventEmitter<void> = new EventEmitter();
 
 	/**
 	 * @description
 	 * Listen to scroll event to see if scroll is at bottom of the scroll
 	 */
 	@HostListener('window:scroll', [])
-	checkScrollAtBottom() {
-		const scrollAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-
-		if (scrollAtBottom) {
-			this.scrollAtBottom.emit();
+	checkScrollApproachesBottom() {
+		const scrollApproachesBottom = document.body.offsetHeight - (window.innerHeight + window.scrollY) < 150;
+		if (scrollApproachesBottom) {
+			this.scrollApproachesBottom.emit();
 		}
 	}
 }
