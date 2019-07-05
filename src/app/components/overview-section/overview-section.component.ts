@@ -7,4 +7,7 @@ import { Component, Input } from '@angular/core';
 export class OverviewSectionComponent {
 	/** Text to display */
 	@Input() text: string;
+
+	/** Title of the section */
+	@Input() title: string;
 }

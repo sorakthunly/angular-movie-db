@@ -2,8 +2,7 @@ import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
 	selector: 'app-scroll-layout',
-	templateUrl: './scroll-layout.component.html',
-	styleUrls: ['./scroll-layout.component.scss']
+	templateUrl: './scroll-layout.component.html'
 })
 export class ScrollLayoutComponent {
 	/** Event emitted when the scroll is at bottom of the page */

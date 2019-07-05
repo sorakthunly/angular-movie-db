@@ -5,6 +5,9 @@ import { Component, Input } from '@angular/core';
 	templateUrl: './movie-recap.component.html'
 })
 export class MovieRecapComponent {
+	/** Duration of the movie */
+	@Input() duration: number;
+
 	/** Date of the release */
 	@Input() releaseDate: string;
 

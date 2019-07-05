@@ -1,16 +1,15 @@
-@import '~bootstrap/scss/bootstrap';
 @import 'src/variables';
 
 .search-input-container {
 	align-items: center;
-	background: $white;
+	background: white;
 	border-radius: 2em;
 	color: $primary;
 	display: flex;
 	padding: 0.75em 1em;
 
 	.search-input {
-		background: $white;
+		background: white;
 		border: 0;
 		color: $primary;
 		width: 100%;

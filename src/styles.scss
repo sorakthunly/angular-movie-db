@@ -12,5 +12,9 @@ hr {
 	background-color: $quartenary;
 }
 
+button:focus {
+	outline: 0;
+}
+
 @include text-emphasis-variant('.text-dark', $text-dark);
 @include text-emphasis-variant('.text-light', $text-light);

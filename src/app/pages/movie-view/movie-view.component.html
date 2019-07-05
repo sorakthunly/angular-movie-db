@@ -1,38 +1,15 @@
-<app-container-fullscreen *ngIf="movieDetail.isLoading">
-	<app-loading-section></app-loading-section>
-</app-container-fullscreen>
-
+<app-fullscreen-loading *ngIf="movieDetail.isLoading"></app-fullscreen-loading>
 <ng-container *ngIf="!movieDetail.isLoading && movieDetail.movie">
 	<app-backdrop-cover [imageUrl]="movieDetail.movie.backdrop_path | image">
-		<app-container>
+		<app-container [hasVerticalPadding]="true">
 			<button mat-icon-button (click)="goBackPage()">
 				<mat-icon>arrow_back</mat-icon>
 			</button>
 		</app-container>
 	</app-backdrop-cover>
-
+	<app-movie-snapshot [movie]="movieDetail.movie"></app-movie-snapshot>
 	<app-container>
-		<!-- <section class="d-flex align-items-end">
-			<section class="vertical-offset-wrapper">
-				<section class="vertical-offset">
-					<img [src]="movieDetail.movie.poster_path | image" alt="Poster image" class="poster-image" />
-				</section>
-			</section>
-
-			<app-container>
-				<app-heading-title>{{ movieDetail.movie.original_title }}</app-heading-title>
-				<p class="text-dark small">
-					{{ movieDetail.movie.release_date | stringDate: 'YYYY' }} ·
-					{{ movieDetail.movie.vote_average | userScore }} User Score
-				</p>
-			</app-container>
-		</section> -->
-		<app-movie-recap
-			[releaseDate]="movieDetail.movie.release_date"
-			[score]="movieDetail.movie.vote_average"
-			[title]="movieDetail.movie.original_title"
-		></app-movie-recap>
 		<hr />
-		<app-overview-section [text]="movieDetail.movie.overview"></app-overview-section>
+		<app-overview-section title="Overview" [text]="movieDetail.movie.overview"></app-overview-section>
 	</app-container>
 </ng-container>

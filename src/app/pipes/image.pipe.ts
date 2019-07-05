@@ -12,6 +12,6 @@ export class ImagePipe implements PipeTransform {
 	 * @param {string} path	Image path without the base URL
 	 */
 	transform(path: string): string {
-		return `${BASE_IMAGE_URL}${path}`;
+		return path ? `${BASE_IMAGE_URL}${path}` : null;
 	}
 }

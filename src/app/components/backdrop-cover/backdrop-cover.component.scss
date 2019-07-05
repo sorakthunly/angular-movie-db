@@ -1,5 +1,7 @@
+@import 'src/variables';
+
 .backdrop-cover-section {
-	height: 300px;
+	height: $movie-backdrop-height;
 	width: 100%;
 	background-repeat: no-repeat no-repeat;
 	background-position: center;

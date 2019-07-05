@@ -1,0 +1,21 @@
+<section class="movie-snapshot">
+	<section class="movie-recap-offset-wrapper container">
+		<img
+			#movieRecapImage
+			appDefaultImage
+			[src]="movie.poster_path | image"
+			alt="Poster image"
+			class="movie-recap-poster-image"
+		/>
+
+		<section class="movie-recap-wrapper pt-3">
+			<app-movie-recap
+				#movieRecap
+				[releaseDate]="movie.release_date"
+				[score]="movie.vote_average"
+				[title]="movie.original_title"
+				[duration]="movie.runtime"
+			></app-movie-recap>
+		</section>
+	</section>
+</section>

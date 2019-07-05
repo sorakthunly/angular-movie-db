@@ -14,47 +14,53 @@ import {
 	BackdropCoverComponent,
 	ContainerComponent,
 	ContainerFullscreenComponent,
+	FullscreenLoadingComponent,
 	HeaderComponent,
 	HeadingTitleComponent,
 	HeadingSectionComponent,
 	LoadingSectionComponent,
 	MovieCardComponent,
+	MovieRecapComponent,
 	MoviesContainerComponent,
 	NotFoundComponent,
+	OverviewSectionComponent,
 	ScrollLayoutComponent,
 	ScrollTopComponent,
 	SearchInputComponent,
 	UserScoreComponent
 } from './components';
-import { MovieRecapComponent } from './components/movie-recap/movie-recap.component';
-import { OverviewSectionComponent } from './components/overview-section/overview-section.component';
+import { DefaultImageDirective } from './directives';
 import { MoviesEffect } from './effects';
 import { MovieListComponent, MovieViewComponent, PageNotFoundComponent } from './pages';
-import { ImagePipe, StringDatePipe, UserScorePipe } from './pipes';
+import { ImagePipe, MovieDurationPipe, StringDatePipe, UserScorePipe } from './pipes';
 import { APPLICATION_REDUCERS } from './store';
 
 const COMPONENTS = [
 	BackdropCoverComponent,
 	ContainerComponent,
 	ContainerFullscreenComponent,
+	FullscreenLoadingComponent,
 	HeaderComponent,
 	HeadingTitleComponent,
 	HeadingSectionComponent,
 	LoadingSectionComponent,
 	MovieCardComponent,
+	MovieRecapComponent,
 	MoviesContainerComponent,
 	NotFoundComponent,
+	OverviewSectionComponent,
 	ScrollLayoutComponent,
 	ScrollTopComponent,
 	SearchInputComponent,
 	UserScoreComponent
 ];
+const DIRECTIVES = [DefaultImageDirective];
 const MATERIAL_MODULES = [MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 const PAGES = [MovieListComponent, MovieViewComponent, PageNotFoundComponent];
-const PIPES = [ImagePipe, StringDatePipe, UserScorePipe];
+const PIPES = [ImagePipe, MovieDurationPipe, StringDatePipe, UserScorePipe];
 
 @NgModule({
-	declarations: [AppComponent, ...COMPONENTS, ...PAGES, ...PIPES, OverviewSectionComponent, MovieRecapComponent],
+	declarations: [AppComponent, ...COMPONENTS, ...DIRECTIVES, ...PAGES, ...PIPES],
 	imports: [
 		BrowserAnimationsModule,
 		BrowserModule,
@@ -65,7 +71,6 @@ const PIPES = [ImagePipe, StringDatePipe, UserScorePipe];
 		StoreModule.forRoot(APPLICATION_REDUCERS),
 		...MATERIAL_MODULES
 	],
-	providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

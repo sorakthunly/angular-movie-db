@@ -1,3 +1,5 @@
+@import 'src/variables';
+
 .movie-card-container {
 	position: relative;
 
@@ -6,7 +8,7 @@
 	}
 
 	.movie-card-image {
-		border-radius: 1em;
+		border-radius: $movie-poster-border-radius;
 		width: 100%;
 	}
 }

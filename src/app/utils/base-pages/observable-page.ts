@@ -1,5 +1,4 @@
 import { OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { ISubscriptions } from 'src/app/types';
 
 /**

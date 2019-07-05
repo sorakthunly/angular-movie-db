@@ -4,13 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApplicationStore } from 'src/app/store';
 import { FetchMovie } from 'src/app/store/actions';
-import { IMovie, IMovieState } from 'src/app/types';
+import { IMovieState } from 'src/app/types';
 import { ObservablePage } from 'src/app/utils/base-pages';
 
 @Component({
 	selector: 'app-movie-view',
-	templateUrl: './movie-view.component.html',
-	styleUrls: ['./movie-view.component.scss']
+	templateUrl: './movie-view.component.html'
 })
 export class MovieViewComponent extends ObservablePage {
 	/** Movie instance to display */
@@ -44,7 +43,6 @@ export class MovieViewComponent extends ObservablePage {
 	subscribeToMoviesStore() {
 		this.subscriptions.moviesStore = this.store.select('movies').subscribe(movies => {
 			this.movieDetail = movies.selectedMovie;
-			console.log(this.movieDetail);
 		});
 	}
 
