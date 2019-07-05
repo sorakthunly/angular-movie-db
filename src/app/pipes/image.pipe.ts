@@ -18,7 +18,7 @@ export class ImagePipe implements PipeTransform {
 	 *
 	 * @param {string} path	Image path without the base URL
 	 */
-	transform(path: string, isResponsive: boolean): string {
+	transform(path: string, isResponsive?: boolean): string {
 		const isMinWidth500px = window.matchMedia('(min-width: 500px)').matches;
 		const baseImageUrl = isResponsive && isMinWidth500px ? BASE_IMAGE_ORIGINAL_URL : BASE_IMAGE_RESIZED_URL;
 

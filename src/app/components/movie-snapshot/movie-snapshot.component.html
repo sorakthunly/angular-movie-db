@@ -1,16 +1,9 @@
 <section class="movie-snapshot">
 	<section class="movie-snapshot-offset-wrapper container">
-		<img
-			#movieRecapImage
-			appDefaultImage
-			[src]="movie.poster_path | image"
-			alt="Poster image"
-			class="movie-snapshot-poster-image"
-		/>
+		<img appDefaultImage [src]="movie.poster_path | image" alt="Poster image" class="movie-snapshot-poster-image" />
 
 		<section class="movie-snapshot-wrapper pt-3">
 			<app-movie-recap
-				#movieRecap
 				[releaseDate]="movie.release_date"
 				[score]="movie.vote_average"
 				[title]="movie.original_title"
