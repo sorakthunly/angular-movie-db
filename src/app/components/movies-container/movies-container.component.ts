@@ -12,6 +12,9 @@ export class MoviesContainerComponent {
 	/** Array to movies to display */
 	@Input() movies: IMovies;
 
+	/** Not found text to display */
+	@Input() notFoundText = 'Unfortunately, we could not find any results matching your query.';
+
 	/** Title of the containers */
 	@Input() title: string;
 

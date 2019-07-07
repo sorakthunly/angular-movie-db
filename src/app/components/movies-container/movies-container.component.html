@@ -7,10 +7,6 @@
 			</article>
 		</section>
 		<app-loading-section *ngIf="isLoading"></app-loading-section>
-		<app-not-found
-			*ngIf="isShowingNotFoundText"
-			text="Unfortunately, we could not find any results matching your query."
-		>
-		</app-not-found>
+		<app-not-found *ngIf="isShowingNotFoundText" [text]="notFoundText"> </app-not-found>
 	</section>
 </app-scroll-layout>

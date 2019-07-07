@@ -8,6 +8,7 @@ The application allows users to browse popular movies and search for any movies 
 
 ## What's Included
 
+- Redux state management with NgRx
 - Unit testing with Jest instead of Angular default - Karma and Jasmine - for performance reason
 - Continuous integration and deployment with Firebase and Circle CI
 - Enhanced linting tools with Prettier and Tslint
@@ -20,8 +21,8 @@ The application allows users to browse popular movies and search for any movies 
 
 ## Suggested Improvements
 
-- Static images could be converted to webp for performance gain
-- In production, the app could be hosted on an Express server and route each API request through the server to mask the API Key and make it more secure rather than requesting from the Movie DB API directly. However, for time constraint reasons, I wrote a node script to generate environment variables file so that the app could access them but the key(s) only lives in the build (CICD) server (not exposed in codebase)
+- Static images could be converted to webp with fallback support for performance gain
+- In production, the app could be hosted on a Node server and route each API request through the server to mask the API Key and make it more secure rather than requesting from the Movie DB API directly. However, for time constraint reasons, I wrote a Node script to generate environment variables file so that the app could access them but the key(s) only lives in the build (CICD) server (not exposed in code repository)
 
 ## Environment Variables
 

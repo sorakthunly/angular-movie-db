@@ -10,7 +10,7 @@ import { ObservablePage } from 'src/app/utils/base-pages';
 })
 export class MovieListComponent extends ObservablePage {
 	/** Movies store */
-	movies: IMoviesState;
+	moviesState: IMoviesState;
 
 	constructor(private store: ApplicationStore) {
 		super();
@@ -23,10 +23,10 @@ export class MovieListComponent extends ObservablePage {
 	 * Subscribe to state observable and dispatch popular movies fetch action if not already.
 	 */
 	initialiseMoviesState() {
-		this.subscriptions.moviesSubscription = this.store.select('movies').subscribe(movies => {
-			this.movies = movies;
+		this.subscriptions.moviesSubscription = this.store.select('movies').subscribe(moviesState => {
+			this.moviesState = moviesState;
 
-			const isMoviesStateInitialised = movies.initialised;
+			const isMoviesStateInitialised = moviesState.initialised;
 			if (!isMoviesStateInitialised) {
 				this.store.dispatch(new FetchPopularMovies());
 			}
@@ -38,8 +38,8 @@ export class MovieListComponent extends ObservablePage {
 	 * Dispatch an event to fetch more popular movies and append to the list.
 	 */
 	fetchMorePopularMovies() {
-		if (!this.movies.isLoading) {
-			const nextPage = this.movies.popularMoviesPage + 1;
+		if (!this.moviesState.isLoading) {
+			const nextPage = this.moviesState.popularMoviesPage + 1;
 			this.store.dispatch(new FetchPopularMovies(nextPage));
 		}
 	}
@@ -59,9 +59,9 @@ export class MovieListComponent extends ObservablePage {
 	 * Dispatch an event to fetch more popular movies and append to the list.
 	 */
 	searchMoreMoviesByKeyword() {
-		if (!this.movies.isLoading) {
-			const nextPage = this.movies.searchedMoviesPage + 1;
-			this.store.dispatch(new SearchMoreMovies(this.movies.keywords, nextPage));
+		if (!this.moviesState.isLoading) {
+			const nextPage = this.moviesState.searchedMoviesPage + 1;
+			this.store.dispatch(new SearchMoreMovies(this.moviesState.keywords, nextPage));
 		}
 	}
 }

@@ -32,7 +32,7 @@ describe('MovieCardComponent', () => {
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 
-		/* JSDom doesn't have match media. Has to set window placholder for testing */
+		/* JSDom doesn't have match media. Have to set mock function for testing */
 		window.matchMedia = jest.fn().mockImplementation(query => {
 			return { matches: false };
 		});

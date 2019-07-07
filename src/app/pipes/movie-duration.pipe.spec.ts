@@ -6,6 +6,7 @@ describe('MovieDurationPipe', () => {
 
 		const runtime = 120;
 		const expectedDuration = '2h 0 min';
+
 		const transformedValue = pipe.transform(runtime);
 		expect(transformedValue).toEqual(expectedDuration);
 	});
